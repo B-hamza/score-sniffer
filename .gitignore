@@ -1,5 +1,8 @@
 logs
 target
+/.ensime*
+.ensime
+ensime*
 /.idea
 /.idea_modules
 /.classpath

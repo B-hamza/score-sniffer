@@ -13,8 +13,20 @@ public class Oauth extends Controller {
   }
 
   public Result index() {
-    String url = conf.getString("oauth.facebook.apiUrl");
-    return ok(url);
+    String host = conf.getString("oauth.facebook.apiUrl");
+    String path = conf.getString("oauth.facebook.authUri");
+    String clientId = conf.getString("oauth.facebook.apiId");
+    String callbackUri = "http://localhost:9000/callback";
+
+    String uri = host+path+"?client_id="+clientId+"&redirect_uri="+callbackUri;
+
+    System.out.println(uri);
+  
+    return redirect(uri);
+  }
+
+  public Result callback(String code) {
+    return ok(code);
   }
 
 }
